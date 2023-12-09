@@ -44,7 +44,7 @@ const Header = () => {
             dragElastic={1}
             src={Logo}
             alt="Logo"
-            className="w-28 h-28 p-2 mx-4 hover:scale-110 hover:animate-none hover:cursor-pointer active:cursor-grabbing transition-all "
+            className="animate-float w-28 h-28 p-2 mx-4 hover:scale-110 hover:animate-none hover:cursor-pointer active:cursor-grabbing transition-all "
             onMouseUp={() => navigate("/")}
           />
           {links.map((link, index) => (
@@ -55,7 +55,13 @@ const Header = () => {
             >
               <NavLink
                 to={link.to}
-                className="flex h-full px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white active:scale-95 active:delay-0 transition-all ease delay-100"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "flex h-full px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white active:scale-95 active:delay-0 transition-all ease delay-100"
+                    : isActive
+                    ? "flex h-full px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white bg-white/5 scale-105 active:scale-90 active:delay-0 transition-all ease delay-100"
+                    : "flex h-full px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white active:scale-95 active:delay-0 transition-all ease delay-100"
+                }
               >
                 <span className="w-fit">{link.name}</span>
               </NavLink>

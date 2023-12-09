@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Anychargen",
+    "description": "A simple project built using React with no backend.",
+    "technologies": ["React", "HTML", "CSS", "JavaScript"],
+    "link": "link_to_anychargen",
+    "images": {
+      "home": "/assets/projects/anychargen/home.jpeg",
+      "about": "/assets/projects/anychargen/about.jpeg",
+      "contact": "/assets/projects/anychargen/contact.jpeg"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Framextract",
+    "description": "A video frame extractor project using Python.",
+    "technologies": ["Python"],
+    "link": "link_to_framextract",
+    "images": {
+      "home": "/assets/projects/framextract/home.jpeg",
+      "about": "/assets/projects/framextract/about.jpeg",
+      "contact": "/assets/projects/framextract/contact.jpeg"
+    }
+  },
+  {
+    "id": 3,
+    "name": "JJ Cafe",
+    "description": "The first project with my team in bootcamp using only HTML and CSS with no JavaScript or frameworks.",
+    "technologies": ["HTML", "CSS"],
+    "link": "link_to_jjcafe",
+    "images": {
+      "home": "/assets/projects/jjcafe/home.jpeg",
+      "about": "/assets/projects/jjcafe/about.jpeg",
+      "contact": "/assets/projects/jjcafe/contact.jpeg"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Playkodex",
+    "description": "The second and capstone project that used MERN stack completely.",
+    "technologies": [
+      "MongoDB",
+      "Express.js",
+      "React",
+      "Node.js",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "link_to_playkodex",
+    "images": {
+      "home": "/assets/projects/playkodex/home.jpeg",
+      "about": "/assets/projects/playkodex/about.jpeg",
+      "contact": "/assets/projects/playkodex/contact.jpeg"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Savertracker",
+    "description": "A simple income and expenses tracking app built using React with no backend.",
+    "technologies": ["React", "HTML", "CSS", "JavaScript"],
+    "link": "link_to_savertracker",
+    "images": {
+      "home": "/assets/projects/savertracker/home.jpeg",
+      "about": "/assets/projects/savertracker/about.jpeg",
+      "contact": "/assets/projects/savertracker/contact.jpeg"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Noughts And Crosses",
+    "description": "A project that completely uses MERN stack.",
+    "technologies": [
+      "MongoDB",
+      "Express.js",
+      "React",
+      "Node.js",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "link_to_noughtsandcrosses",
+    "images": {
+      "home": "/assets/projects/noughtsandcrosses/home.jpeg",
+      "about": "/assets/projects/noughtsandcrosses/about.jpeg",
+      "contact": "/assets/projects/noughtsandcrosses/contact.jpeg"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Muse-O-Phone",
+    "description": "A project built purely with vanilla HTML, CSS, and JS.",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "link": "link_to_museophone",
+    "images": {
+      "home": "/assets/projects/museophone/home.jpeg",
+      "about": "/assets/projects/museophone/about.jpeg",
+      "contact": "/assets/projects/museophone/contact.jpeg"
+    }
+  }
+]
