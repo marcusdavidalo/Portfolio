@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
 import { motion } from "framer-motion";
 import Me from "../assets/home/Me3.png";
+import Typed from "typed.js";
 
 const Home = () => {
   useTitle("Home");
-
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const name = useRef(null);
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -18,6 +19,26 @@ const Home = () => {
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const head = new Typed(name.current, {
+      strings: [
+        "Marcus David Alo",
+        "Full-Stack Web Developer",
+        "MERN Stack Developer",
+      ],
+      typeSpeed: 50,
+      backSpeed: 25,
+      backDelay: 1500,
+      startDelay: 500,
+      loop: true,
+    });
+
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      head.destroy();
     };
   }, []);
 
@@ -36,7 +57,7 @@ const Home = () => {
               dragElastic={1}
               className="text-9xl font-bold whitespace-nowrap"
             >
-              Marcus David Alo
+              <span ref={name} />
             </motion.h2>
             <p className="text-4xl font-semibold mt-8 top-0">
               Hi there, I’m a full stack web developer who loves the MERN stack.

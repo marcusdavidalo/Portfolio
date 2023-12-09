@@ -1,9 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 const Loader = () => {
   const bgControls = useAnimation();
   const logoControls = useAnimation();
+  const [visitCount, setVisitCount] = useState(0);
+
+  // This useEffect runs once when the component mounts
+  useEffect(() => {
+    // Check if visitCount exists in local storage
+    let visitCount = localStorage.getItem("visitCount");
+
+    // If not, set it to 1
+    if (!visitCount) {
+      localStorage.setItem("visitCount", "0");
+      setVisitCount(0);
+    } else {
+      // Set visitCount to the stored value
+      setVisitCount(Number(visitCount));
+    }
+  }, []);
 
   useEffect(() => {
     const sequence = async () => {
@@ -18,6 +34,15 @@ const Loader = () => {
     };
     sequence();
   }, [bgControls, logoControls]);
+
+  // This useEffect runs when the component unmounts
+  useEffect(() => {
+    return () => {
+      // Increment visitCount by 1
+      let visitCount = Number(localStorage.getItem("visitCount")) + 1;
+      localStorage.setItem("visitCount", visitCount.toString());
+    };
+  }, []);
 
   return (
     <motion.div
@@ -43,8 +68,16 @@ const Loader = () => {
         exit={{ opacity: 0 }}
         className="text-4xl font-semibold"
       >
-        Welcome
+        Welcome!
       </motion.h1>
+      <motion.span
+        initial={{ filter: "blur(0px)", opacity: 1 }}
+        animate={logoControls}
+        exit={{ opacity: 0 }}
+        className="text-lg font-mono absolute w-screen h-screen top-0 left-0"
+      >
+        {visitCount <= 1 ? "" : `Times Visited: ${visitCount}`}
+      </motion.span>
     </motion.div>
   );
 };

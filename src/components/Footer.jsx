@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -6,8 +6,38 @@ import {
   faFacebook,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import Typed from "typed.js";
 
 const Footer = () => {
+  const [visitCount, setVisitCount] = useState(0);
+  const viscount = useRef(null);
+
+  useEffect(() => {
+    // Check if visitCount exists in local storage
+    let visitCount = localStorage.getItem("visitCount");
+
+    // If not, set it to 1
+    if (!visitCount) {
+      localStorage.setItem("visitCount", "0");
+      setVisitCount(0);
+    } else {
+      // Set visitCount to the stored value
+      setVisitCount(Number(visitCount));
+    }
+
+    const visited = new Typed(viscount.current, {
+      strings: ["Times Visited", "Times Reloaded"],
+      typeSpeed: 75,
+      backSpeed: 100,
+      loop: true,
+    });
+
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      visited.destroy();
+    };
+  }, []);
+
   return (
     <footer className="absolute bottom-0 left-0 w-screen flex items-center justify-center text-white/50 h-20 overflow-hidden">
       <div className="grid grid-cols-3 text-xl w-full">
@@ -24,6 +54,9 @@ const Footer = () => {
         </div>
         <div className="flex flex-col justify-center items-center">
           <p>© 2023 Marcus David Alo. All rights reserved.</p>
+          <div className=" text-xs font-mono">
+            <span ref={viscount} />: {visitCount}
+          </div>
         </div>
         <div className="flex justify-end items-center space-x-4 px-4">
           <a
