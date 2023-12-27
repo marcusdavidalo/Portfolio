@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Logo from "../assets/global/Logo.ico";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon, BarsArrowUpIcon } from "@heroicons/react/24/solid";
 
 const Header = () => {
   const location = useLocation();
@@ -107,7 +107,7 @@ const Header = () => {
           <div className="md:hidden absolute top-0 right-0">
             <button onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? (
-                <XMarkIcon className="h-10 w-10 text-white m-10" />
+                <BarsArrowUpIcon className="h-12 w-10 text-white m-10" />
               ) : (
                 <>
                   <Bars3Icon className="h-10 w-10 text-white m-10" />
