@@ -107,10 +107,10 @@ const Header = () => {
           <div className="md:hidden absolute top-0 right-0">
             <button onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? (
-                <BarsArrowUpIcon className="h-12 w-10 text-white m-10" />
+                <BarsArrowUpIcon className="h-12 w-10 text-white m-10 z-50" />
               ) : (
                 <>
-                  <Bars3Icon className="h-10 w-10 text-white m-10" />
+                  <Bars3Icon className="h-10 w-10 text-white m-10 z-50" />
                   {/* <div className="h-26"></div> */}
                 </>
               )}
@@ -118,7 +118,7 @@ const Header = () => {
           </div>
           <div
             className={`md:flex h-full justify-end w-full ${
-              isOpen ? "flex flex-col h-[70vh]" : "hidden"
+              isOpen ? "flex flex-col h-2/3" : "hidden"
             }`}
           >
             {links.map((link, index) => (
