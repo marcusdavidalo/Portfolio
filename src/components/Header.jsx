@@ -46,7 +46,7 @@ const Header = () => {
 
   useEffect(() => {
     setActiveLink(location.pathname);
-    setAreRefsReady(false); // Trigger a re-render when the active link changes
+    setAreRefsReady(true); // Trigger a re-render when the active link changes
   }, [location, windowWidth]); // Add windowWidth as a dependency here
 
   useEffect(() => {
@@ -111,14 +111,14 @@ const Header = () => {
               ) : (
                 <>
                   <Bars3Icon className="h-10 w-10 text-white m-10" />
-                  <div className="h-26"></div>
+                  {/* <div className="h-26"></div> */}
                 </>
               )}
             </button>
           </div>
           <div
             className={`md:flex h-full justify-end w-full ${
-              isOpen ? "flex flex-col h-[60vh]" : "hidden"
+              isOpen ? "flex flex-col h-[70vh]" : "hidden"
             }`}
           >
             {links.map((link, index) => (
@@ -146,7 +146,16 @@ const Header = () => {
           {areRefsReady && (
             <motion.div
               className="absolute bottom-0 h-1 bg-white"
-              initial={false}
+              initial={{
+                x:
+                  linksRef.current[
+                    links.findIndex((link) => link.to === activeLink)
+                  ]?.offsetLeft ?? 0,
+                width:
+                  linksRef.current[
+                    links.findIndex((link) => link.to === activeLink)
+                  ]?.offsetWidth ?? 0,
+              }}
               animate={{
                 x:
                   linksRef.current[
