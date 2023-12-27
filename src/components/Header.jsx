@@ -2,13 +2,17 @@ import React, { useState, useRef, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Logo from "../assets/global/Logo.ico";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeLink, setActiveLink] = useState("/");
   const [areRefsReady, setAreRefsReady] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const linksRef = useRef([]);
+  const node = useRef();
 
   const links = [
     { name: "Home", to: "/" },
@@ -23,18 +27,71 @@ const Header = () => {
   };
 
   useEffect(() => {
+    // Function to handle window resize
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth); // Update the window width state
+      if (window.innerWidth > 768) {
+        setIsOpen(false);
+      }
+    };
+
+    // Add the event listener
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listener
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     setActiveLink(location.pathname);
-  }, [location]);
+    setAreRefsReady(false); // Trigger a re-render when the active link changes
+  }, [location, windowWidth]); // Add windowWidth as a dependency here
 
   useEffect(() => {
     setAreRefsReady(linksRef.current.every((ref) => ref !== undefined));
+  }, [activeLink, windowWidth]); // Add windowWidth as a dependency here
+
+  useEffect(() => {
+    // Function to handle click outside of the menu
+    const handleClickOutside = (e) => {
+      if (node.current.contains(e.target)) {
+        // Inside click
+        return;
+      }
+      // Outside click
+      setIsOpen(false);
+    };
+
+    // Function to handle window resize
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsOpen(false);
+      }
+    };
+
+    // Add the event listeners
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listeners
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
-    <nav className="flex items-center font-bold w-screen justify-center text-white overflow-hidden">
+    <nav
+      ref={node}
+      className={`absolute md:relative flex items-center font-bold h-screen w-screen z-50  md:backdrop-blur-none md:h-[120px] justify-center text-white overflow-hidden ${
+        isOpen ? "bg-black/60 backdrop-blur-md" : "bg-transparent"
+      }`}
+    >
       <div className="container">
         <div
-          className="flex h-28 w-full justify-between items-center text-3xl relative"
+          className="flex flex-col md:flex-row h-screen md:h-28 w-full justify-center md:justify-between items-center text-3xl relative"
           onMouseLeave={() => setActiveLink(location.pathname)}
         >
           <motion.img
@@ -44,29 +101,48 @@ const Header = () => {
             dragElastic={1}
             src={Logo}
             alt="Logo"
-            className="animate-float w-28 h-28 p-2 mx-4 hover:scale-110 hover:animate-none hover:cursor-pointer active:cursor-grabbing transition-all "
+            className="absolute md:relative top-0 left-0 animate-float w-28 h-28 p-2 mx-4 hover:scale-110 hover:animate-none hover:cursor-pointer active:cursor-grabbing transition-all "
             onMouseUp={() => navigate("/")}
           />
-          {links.map((link, index) => (
-            <div
-              ref={(el) => (linksRef.current[index] = el)}
-              onMouseEnter={() => handleHover(link.to)}
-              className="flex h-full items-center px-2"
-            >
-              <NavLink
-                to={link.to}
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "flex h-full px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white active:scale-95 active:delay-0 transition-all ease delay-100"
-                    : isActive
-                    ? "flex h-full px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white bg-white/5 scale-105 active:scale-90 active:delay-0 transition-all ease delay-100"
-                    : "flex h-full px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white active:scale-95 active:delay-0 transition-all ease delay-100"
-                }
+          <div className="md:hidden absolute top-0 right-0">
+            <button onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? (
+                <XMarkIcon className="h-10 w-10 text-white m-10" />
+              ) : (
+                <>
+                  <Bars3Icon className="h-10 w-10 text-white m-10" />
+                  <div className="h-26"></div>
+                </>
+              )}
+            </button>
+          </div>
+          <div
+            className={`md:flex h-full justify-end w-full ${
+              isOpen ? "flex flex-col h-[60vh]" : "hidden"
+            }`}
+          >
+            {links.map((link, index) => (
+              <div
+                key={link.name}
+                ref={(el) => (linksRef.current[index] = el)}
+                onMouseEnter={() => handleHover(link.to)}
+                className="flex h-full items-center px-2 text-4xl md:text-3xl"
               >
-                <span className="w-fit">{link.name}</span>
-              </NavLink>
-            </div>
-          ))}
+                <NavLink
+                  to={link.to}
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "flex h-full justify-center w-full md:px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white active:scale-95 active:delay-0 transition-all ease-in-out delay-100"
+                      : isActive
+                      ? "flex h-full justify-center w-full md:px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white bg-white/5 scale-105 active:scale-90 active:delay-0 transition-all ease-in-out delay-100"
+                      : "flex h-full justify-center w-full md:px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white active:scale-95 active:delay-0 transition-all ease-in-out delay-100"
+                  }
+                >
+                  <span className="w-fit">{link.name}</span>
+                </NavLink>
+              </div>
+            ))}
+          </div>
           {areRefsReady && (
             <motion.div
               className="absolute bottom-0 h-1 bg-white"
