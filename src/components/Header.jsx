@@ -101,7 +101,7 @@ const Header = () => {
             dragElastic={1}
             src={Logo}
             alt="Logo"
-            className="absolute md:relative top-0 left-0 animate-float w-28 h-28 p-2 mx-4 hover:scale-110 hover:animate-none hover:cursor-pointer active:cursor-grabbing transition-all "
+            className="absolute md:relative top-0 left-0 animate-float w-28 h-28 p-2 mx-4 hover:scale-110 hover:animate-none hover:cursor-pointer active:cursor-grabbing transition-all z-50"
             onMouseUp={() => navigate("/")}
           />
           <div className="md:hidden absolute top-0 right-0">
@@ -118,7 +118,7 @@ const Header = () => {
           </div>
           <div
             className={`md:flex h-full justify-end w-full ${
-              isOpen ? "flex flex-col h-2/3" : "hidden"
+              isOpen ? "flex flex-col " : "hidden"
             }`}
           >
             {links.map((link, index) => (
@@ -134,7 +134,7 @@ const Header = () => {
                     isPending
                       ? "flex h-full justify-center w-full md:px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white active:scale-95 active:delay-0 transition-all ease-in-out delay-100"
                       : isActive
-                      ? "flex h-full justify-center w-full md:px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white bg-white/5 scale-105 active:scale-90 active:delay-0 transition-all ease-in-out delay-100"
+                      ? "flex h-full justify-center w-full md:px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white bg-white/5 scale-105 active:scale-90 active:delay-0 transition-all ease-in-out delay-100 pointer-events-none"
                       : "flex h-full justify-center w-full md:px-2 items-center hover:scale-110 hover:shadow-lg hover:shadow-white active:scale-95 active:delay-0 transition-all ease-in-out delay-100"
                   }
                 >

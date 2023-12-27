@@ -49,13 +49,13 @@ const Home = () => {
         className="absolute top-0 left-0 flex justify-center items-center h-screen w-screen -z-10 overflow-hidden"
       >
         <div className="flex justify-start align-top items-center h-full w-screen">
-          <div className="flex flex-col w-full md:w-2/3 lg:w-1/2 z-10 text-[#fdf6f0] h-2/5 align-top justify-between px-5 py-20 sm:p-10">
+          <div className="absolute flex flex-col w-full md:w-2/3 lg:w-1/2 z-10 text-[#fdf6f0] h-screen align-top justify-center px-5 py-20 sm:p-10">
             <motion.h2
               drag
               dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
               dragTransition={{ bounceStiffness: 500, bounceDamping: 20 }}
               dragElastic={1}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl font-bold whitespace-nowrap"
+              className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl font-bold whitespace-nowrap"
             >
               <span ref={name} />
             </motion.h2>
