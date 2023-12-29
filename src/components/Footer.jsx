@@ -39,8 +39,8 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="absolute bottom-0 left-0 w-screen flex items-center justify-center text-white/50 h-20 overflow-hidden">
-      <div className="grid grid-cols-3 text-xl w-full">
+    <footer className="fixed bottom-0 left-0 w-screen flex items-center justify-center text-white/50 overflow-hidden">
+      <div className="flex flex-col items-center md:flex-row md:justify-between gap-4 text-xl w-full py-4 ">
         <div>
           <p className="px-4">
             <a

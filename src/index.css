@@ -4,6 +4,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&family=Smooch+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+* {
+  cursor: none;
+}
+
 body {
   margin: 0;
   font-family: "Smooch Sans", sans-serif;
@@ -15,4 +19,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
+  pointer-events: none;
+  z-index: 9999;
 }

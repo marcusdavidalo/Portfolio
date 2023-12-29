@@ -101,7 +101,7 @@ const Header = () => {
             dragElastic={1}
             src={Logo}
             alt="Logo"
-            className="absolute md:relative top-0 left-0 animate-float w-28 h-28 p-2 mx-4 hover:scale-110 hover:animate-none hover:cursor-pointer active:cursor-grabbing transition-all z-50"
+            className="absolute md:relative top-0 left-0 animate-float w-20 md:w-28 h-28 object-contain p-2 mx-4 hover:scale-110 hover:animate-none active:animate-none z-50"
             onMouseUp={() => navigate("/")}
           />
           <div className="md:hidden absolute top-0 right-0">
