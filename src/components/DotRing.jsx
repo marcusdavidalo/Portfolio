@@ -1,42 +1,56 @@
-// import "./DotRing.css";
 import useMousePosition from "../hooks/useMousePosition";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const DotRing = () => {
   const { x, y } = useMousePosition();
-  const [isMouseDown, setIsMouseDown] = useState(false);
-  const [cursorSize, setCursorSize] = useState("8px");
+  const [cursorSize, setCursorSize] = useState("12px");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 700);
+
+  const mouseDownHandler = useCallback(() => {
+    setCursorSize("6px");
+  }, []);
+
+  const mouseUpHandler = useCallback(() => {
+    setCursorSize("12px");
+  }, []);
+
+  const resizeHandler = useCallback(() => {
+    setIsMobile(window.innerWidth <= 700);
+  }, []);
 
   useEffect(() => {
-    const mouseDownHandler = () => {
-      setIsMouseDown(true);
-      setCursorSize("6px");
-    };
-    const mouseUpHandler = () => {
-      setIsMouseDown(false);
-      setCursorSize("12px");
+    let resizeTimeout;
+    const debouncedResizeHandler = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        resizeHandler();
+      }, 100);
     };
 
     window.addEventListener("mousedown", mouseDownHandler);
     window.addEventListener("mouseup", mouseUpHandler);
+    window.addEventListener("resize", debouncedResizeHandler);
 
     return () => {
       window.removeEventListener("mousedown", mouseDownHandler);
       window.removeEventListener("mouseup", mouseUpHandler);
+      window.removeEventListener("resize", debouncedResizeHandler);
     };
-  }, []);
+  }, [mouseDownHandler, mouseUpHandler, resizeHandler]);
 
   return (
-    <div
-      style={{
-        left: `${x}px`,
-        top: `${y}px`,
-        width: cursorSize,
-        height: cursorSize,
-        transition: "width 0.1s, height 0.1s",
-      }}
-      className="dot"
-    ></div>
+    !isMobile && (
+      <div
+        style={{
+          left: `${x}px`,
+          top: `${y}px`,
+          width: cursorSize,
+          height: cursorSize,
+          transition: "width 0.1s, height 0.1s",
+        }}
+        className="dot"
+      ></div>
+    )
   );
 };
 

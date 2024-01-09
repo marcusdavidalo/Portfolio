@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
 import ProjData from "../data/projects/tempdata.json";
+import Modal from "../components/Modal";
 
 const Projects = () => {
   const [projects, setProjects] = useState(ProjData);
+  const navigate = useNavigate();
+  const { projectName } = useParams();
+  const selectedProject = projects.find(
+    (project) => project.name === projectName
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,8 +29,6 @@ const Projects = () => {
     fetchData();
   }, []);
 
-  console.log(ProjData);
-
   useTitle("Projects");
 
   return (
@@ -35,14 +40,26 @@ const Projects = () => {
               src={project.images.home}
               alt={project.name}
               className=" h-32 w-full hover:scale-110 transition-all ease-in-out object-cover"
+              onClick={() => navigate(`/projects/${project.name}`)}
             />
             <div className="p-4">
-              <h2 className="font-bold text-2xl mb-2">{project.name}</h2>
+              <h2
+                className="font-bold text-2xl mb-2"
+                onClick={() => navigate(`/projects/${project.name}`)}
+              >
+                {project.name}
+              </h2>
               <p className="text-gray-700">{project.description}</p>
             </div>
           </div>
         </div>
       ))}
+      {selectedProject && (
+        <Modal
+          project={selectedProject}
+          onClose={() => navigate("/projects")}
+        />
+      )}
     </div>
   );
 };

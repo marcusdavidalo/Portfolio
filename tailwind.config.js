@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
+        scroll: "scroll 2s linear infinite",
         fadeIn: "fadeIn 2s ease-in forwards",
         fadeOut: "fadeOut 2s ease-in forwards",
         float: "float 3s infinite",
@@ -24,6 +25,10 @@ module.exports = {
           "0%": { transform: "translateY(5px)" },
           "50%": { transform: "translateY(-5px)" },
           "100%": { transform: "translateY(5px)" },
+        },
+        scroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
         },
       },
     },

@@ -4,10 +4,10 @@ import {
   Home,
   About,
   Contact,
-  Gallery,
   Projects,
   Admin,
   NotFound,
+  Services,
 } from "../pages";
 
 export const AllRoutes = () => {
@@ -17,8 +17,10 @@ export const AllRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/projects" element={<Projects />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/projects" element={<Projects />}>
+          <Route path=":projectName" element={<Projects />} />
+        </Route>
         <Route path="/admin" element={<Admin />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

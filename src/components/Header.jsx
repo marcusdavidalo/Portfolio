@@ -17,7 +17,7 @@ const Header = () => {
   const links = [
     { name: "Home", to: "/" },
     { name: "Projects", to: "/projects" },
-    { name: "Gallery", to: "/gallery" },
+    { name: "Services", to: "/services" },
     { name: "About", to: "/about" },
     { name: "Contact", to: "/contact" },
   ];
