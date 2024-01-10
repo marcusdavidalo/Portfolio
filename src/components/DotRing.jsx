@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 const DotRing = () => {
   const { x, y } = useMousePosition();
   const [cursorSize, setCursorSize] = useState("12px");
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 700);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const mouseDownHandler = useCallback(() => {
     setCursorSize("6px");
@@ -15,7 +15,7 @@ const DotRing = () => {
   }, []);
 
   const resizeHandler = useCallback(() => {
-    setIsMobile(window.innerWidth <= 700);
+    setIsMobile(window.innerWidth <= 768);
   }, []);
 
   useEffect(() => {
