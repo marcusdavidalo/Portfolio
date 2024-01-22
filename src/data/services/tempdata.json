@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Service 1",
+    "description": "This is a description of Service 1.",
+    "images": {
+      "home": "path/to/image1.png"
+    }
+  },
+  {
+    "name": "Service 2",
+    "description": "This is a description of Service 2.",
+    "images": {
+      "home": "path/to/image2.png"
+    }
+  },
+  {
+    "name": "Service 3",
+    "description": "This is a description of Service 3.",
+    "images": {
+      "home": "path/to/image3.png"
+    }
+  }
+]

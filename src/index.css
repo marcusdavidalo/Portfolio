@@ -40,3 +40,17 @@ code {
   pointer-events: none;
   z-index: 9999;
 }
+
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border: "2px solid white";
+  border-radius: "100%";
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
+  pointer-events: none;
+  z-index: 9999;
+}

@@ -64,9 +64,12 @@ const Home = () => {
               I create awesome web apps with MongoDB, Express.js, React.js, and
               Node.js.
             </p>
-            <motion.button className="mt-10 py-2 px-4 w-fit bg-white text-black text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold rounded-md shadow-md hover:bg-black hover:text-white hover:shadow-white active:scale-[.90] transition-all ease-in-out">
+            <Link
+              to="/contact"
+              className="mt-10 py-2 px-4 w-fit bg-white text-black text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold rounded-md shadow-md hover:bg-black hover:text-white hover:shadow-white active:scale-[.90] transition-all ease-in-out cursor-none"
+            >
               Contact Me
-            </motion.button>
+            </Link>
           </div>
         </div>
         <div

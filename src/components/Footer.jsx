@@ -13,15 +13,12 @@ const Footer = () => {
   const viscount = useRef(null);
 
   useEffect(() => {
-    // Check if visitCount exists in local storage
     let visitCount = localStorage.getItem("visitCount");
 
-    // If not, set it to 1
     if (!visitCount) {
       localStorage.setItem("visitCount", "0");
       setVisitCount(0);
     } else {
-      // Set visitCount to the stored value
       setVisitCount(Number(visitCount));
     }
 
@@ -33,13 +30,12 @@ const Footer = () => {
     });
 
     return () => {
-      // Destroy Typed instance during cleanup to stop animation
       visited.destroy();
     };
   }, []);
 
   return (
-    <footer className="fixed bottom-0 left-0 w-screen flex items-center justify-center text-white/50 overflow-hidden">
+    <footer className="fixed bottom-0 left-0 w-screen flex items-center justify-center text-white/50 overflow-hidden z-50 backdrop-blur-[2px]">
       <div className="flex flex-col items-center md:flex-row md:justify-between gap-4 text-xl w-full py-4 ">
         <div>
           <p className="px-4">
@@ -59,36 +55,32 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex justify-end items-center space-x-4 px-4">
-          <a
-            href="https://github.com/marcusdavidalo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={faGithub}
-              className="h-8 w-8 transition-all ease hover:text-white"
-            />
-          </a>
-          <a
-            href="https://www.facebook.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={faFacebook}
-              className="h-8 w-8 transition-all ease hover:text-white"
-            />
-          </a>
-          <a
-            href="https://twitter.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={faTwitter}
-              className="h-8 w-8 transition-all ease hover:text-white"
-            />
-          </a>
+          {[
+            {
+              href: "https://github.com/marcusdavidalo",
+              icon: faGithub,
+            },
+            {
+              href: "https://www.facebook.com/yourusername",
+              icon: faFacebook,
+            },
+            {
+              href: "https://twitter.com/yourusername",
+              icon: faTwitter,
+            },
+          ].map((item, index) => (
+            <a
+              key={index}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon
+                icon={item.icon}
+                className="h-8 w-8 transition-all ease hover:text-white"
+              />
+            </a>
+          ))}
         </div>
       </div>
     </footer>
