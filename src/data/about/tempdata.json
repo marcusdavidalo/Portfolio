@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "The Journey of Marcus David Alo",
+    "content": "Welcome to my journey! I'm Marcus, a full stack web developer specializing in the MERN stack. Let me take you through my adventure in the world of web development."
+  },
+  {
+    "id": 2,
+    "title": "From Novice to Full-Stack Web Developer",
+    "content": "It all started with a simple 'Hello, World!' in HTML. From there, I dove into JavaScript, learning the ins and outs of the language and its powerful frameworks like React.js."
+  },
+  {
+    "id": 3,
+    "title": "Title Here",
+    "content": "Content Here"
+  },
+  {
+    "id": 4,
+    "title": "Title Here",
+    "content": "Content Here"
+  }
+]
