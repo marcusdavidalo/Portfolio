@@ -8,7 +8,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="transition-all ease-linear overflow-hidden h-screen fixed">
+    <div className="transition-all ease-linear overflow-hidden h-screen">
       <Cursor />
       <Layout>
         <Background />

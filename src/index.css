@@ -18,6 +18,7 @@ body {
   margin: 0;
   font-family: "Smooch Sans", sans-serif;
   color: white;
+  background: #000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

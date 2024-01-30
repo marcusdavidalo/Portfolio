@@ -6,17 +6,47 @@
   },
   {
     "id": 2,
-    "title": "From Novice to Full-Stack Web Developer",
-    "content": "It all started with a simple 'Hello, World!' in HTML. From there, I dove into JavaScript, learning the ins and outs of the language and its powerful frameworks like React.js."
+    "title": "The Start",
+    "content": "My journey began when I decided to enroll in the Kodego Full Stack Web Development Bootcamp. It was a challenging yet rewarding experience that equipped me with the skills I needed to succeed in the tech industry."
   },
   {
     "id": 3,
-    "title": "Title Here",
-    "content": "Content Here"
+    "title": "Learning the Basics",
+    "content": "In the early stages of the bootcamp, I learned about HTML, CSS, and JavaScript. These are the building blocks of web development and gave me a solid foundation to build upon."
   },
   {
     "id": 4,
-    "title": "Title Here",
-    "content": "Content Here"
+    "title": "Diving into the MERN Stack",
+    "content": "As the bootcamp progressed, I was introduced to the MERN stack - MongoDB, Express.js, React.js, and Node.js. This powerful combination of technologies allowed me to create complex, dynamic websites."
+  },
+  {
+    "id": 5,
+    "title": "Building Projects",
+    "content": "To put my skills to the test, I built several projects during the bootcamp. These projects ranged from simple static websites to complex web applications with user authentication and database integration."
+  },
+  {
+    "id": 6,
+    "title": "Graduation and Beyond",
+    "content": "After months of hard work and learning, I graduated from the bootcamp. But the journey didn't stop there. I continue to learn and grow as a developer, always looking for new challenges and opportunities."
+  },
+  {
+    "id": 7,
+    "title": "What I am Currently Doing",
+    "content": "Post-bootcamp, I've been working on several pet projects mainly for my own convenience, such as a frame extractor for videos using Python, and a savings tracker using React. I'm also currently in the process of self-learning about AI and ML, primarily focusing on Language Model Learning (LLM) and Image Generation with Stable Diffusion."
+  },
+  {
+    "id": 8,
+    "title": "The Future",
+    "content": "Looking ahead, I'm excited about the future of web development. With emerging technologies like AI and blockchain, there's always something new to learn and explore."
+  },
+  {
+    "id": 9,
+    "title": "Get in Touch",
+    "content": "If you'd like to learn more about my work or if you have a project you'd like to discuss, feel free to get in touch. I'm always open to new opportunities and collaborations."
+  },
+  {
+    "id": 10,
+    "title": "Thank You",
+    "content": "Thank you for taking the time to read about my journey. I hope it gives you a glimpse into who I am as a developer and a person. I look forward to what the future holds and the exciting challenges it will bring."
   }
 ]

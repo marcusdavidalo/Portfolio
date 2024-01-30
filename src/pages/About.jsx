@@ -32,7 +32,7 @@ const About = () => {
 
   return (
     <>
-      <div className="absolute top-0 left-0 w-screen h-screen overflow-x-hidden overflow-y-auto py-20 -z-10">
+      <div className="absolute top-0 left-0 w-screen h-screen overflow-x-hidden overflow-y-scroll py-20">
         <div className="w-screen flex justify-center">
           <div
             className="fixed top-0 bottom-0 w-1 bg-white h-full"
@@ -49,7 +49,7 @@ const About = () => {
                   index % 2 === 0
                     ? "md:flex-row-reverse text-left"
                     : "text-right"
-                } w-screen h-2/4 `}
+                } w-screen h-auto `}
               >
                 <div className="absolute translate-y-12 flex align-middle items-center justify-center w-screen">
                   <div className="bg-black border-4 h-4 w-4 border-white rounded-full m-2" />
